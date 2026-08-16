@@ -3,9 +3,7 @@
   "configurations": [
     {
       "name": "misza",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173"],
-      "port": 4173
+      "url": "http://localhost:4173"
     }
   ]
 }

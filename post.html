@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title id="pageTitle">Wpis — MISZA</title>
+<meta name="description" id="pageDesc" content="Aktualności ze studia Misza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Playfair+Display:ital,wght@0,400;1,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+<div class="cursor" id="cursor"><span class="cursor__label"></span></div>
+
+<header class="header" id="header">
+  <a class="header__logo" href="index.html">MISZA<i>®</i></a>
+  <nav class="nav" id="nav">
+    <a href="index.html">Start</a>
+    <a href="gallery.html">Galeria</a>
+    <a href="index.html#about">O studio</a>
+    <a href="aktualnosci.html" class="is-active">Aktualności</a>
+    <a href="index.html#services">Usługi</a>
+    <a href="index.html#contact">Kontakt</a>
+  </nav>
+  <div class="header__right">
+    <a href="index.html#contact" class="btn-ghost">Umów sesję</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ========== WPIS NIE ZNALEZIONY ========== -->
+<section class="pagehead post-notfound" id="postNotFound">
+  <div class="wrap">
+    <p class="eyebrow">404</p>
+    <h1 class="display display--xl">Nie znaleziono<br>tego wpisu</h1>
+    <p class="lead">Ten adres nie prowadzi już do żadnej aktualności — mógł zostać przeniesiony albo usunięty.</p>
+    <a href="aktualnosci.html" class="btn-line magnetic"><span>Wróć do aktualności</span><i></i></a>
+  </div>
+</section>
+
+<div id="postContent">
+
+  <!-- ========== NAGŁÓWEK WPISU ========== -->
+  <section class="post-head" data-post-section>
+    <div class="wrap">
+      <a href="aktualnosci.html" class="post-head__back"><i></i><span>Wszystkie wpisy</span></a>
+      <p class="post-head__meta" data-anim="fade">
+        <b id="postCat">Kategoria</b><i></i><span id="postDate">—</span><i></i><span id="postRead">—</span>
+      </p>
+      <h1 class="display display--xl" id="postTitle" data-anim="fade">Tytuł wpisu</h1>
+      <p class="lead pagehead__lead" id="postExcerpt" data-anim="fade"></p>
+    </div>
+  </section>
+
+  <!-- ========== ZDJĘCIE GŁÓWNE ========== -->
+  <section class="post-hero" data-post-section>
+    <div class="wrap">
+      <figure class="post-hero__media reveal-img">
+        <img id="postImage" src="" alt="">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========== TREŚĆ ========== -->
+  <article class="post-body wrap" id="postBody" data-post-section data-anim="fade"></article>
+
+  <div class="wrap post-body" style="padding-top:0">
+    <div class="post-tags" id="postTags" data-post-section data-anim="fade"></div>
+    <div class="post-share" data-post-section data-anim="fade">
+      <span>Udostępnij</span>
+      <a id="shareMail" href="#">E-mail</a>
+      <a id="shareFb" href="#" target="_blank" rel="noopener">Facebook</a>
+      <a id="shareX" href="#" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+
+  <!-- ========== NAWIGACJA MIĘDZY WPISAMI ========== -->
+  <nav class="post-nav" id="postNav" data-post-section data-anim="fade">
+    <a class="post-nav__item post-nav__item--prev" id="postPrev">
+      <span class="post-nav__label"><i></i><span>Poprzedni wpis</span></span>
+      <span class="post-nav__title"></span>
+    </a>
+    <a class="post-nav__item post-nav__item--next" id="postNext">
+      <span class="post-nav__label"><span>Następny wpis</span><i></i></span>
+      <span class="post-nav__title"></span>
+    </a>
+  </nav>
+
+  <!-- ========== POWIĄZANE WPISY ========== -->
+  <section class="post-related" data-post-section>
+    <div class="wrap">
+      <header class="section__head">
+        <p class="eyebrow" data-anim="fade">Zobacz też</p>
+        <h2 class="display" data-split>Powiązane wpisy</h2>
+      </header>
+      <div class="news-grid" id="postRelated"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== CTA ========== -->
+<section class="cta" id="contact">
+  <div class="cta__bg"><img src="pictures/large/61163821_389454365026864_6372790439929446400_n.jpg" alt="" loading="lazy"></div>
+  <div class="wrap cta__inner">
+    <p class="eyebrow" data-anim="fade">Kontakt</p>
+    <h2 class="display display--xl" data-split>Zróbmy coś pięknego</h2>
+    <a href="mailto:studio@misza.photo" class="btn-line btn-line--lg magnetic"><span>studio@misza.photo</span><i></i></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__col footer__col--brand">
+      <a class="header__logo" href="index.html">MISZA<i>®</i></a>
+      <p>Studio fotografii modowej i portretowej.<br>Warszawa, ul. Wilcza 28</p>
+    </div>
+    <div class="footer__col">
+      <h4>Nawigacja</h4>
+      <a href="index.html">Start</a>
+      <a href="gallery.html">Galeria</a>
+      <a href="index.html#about">O studio</a>
+      <a href="aktualnosci.html">Aktualności</a>
+      <a href="index.html#services">Usługi</a>
+    </div>
+    <div class="footer__col">
+      <h4>Kontakt</h4>
+      <a href="mailto:studio@misza.photo">studio@misza.photo</a>
+      <a href="tel:+48600100200">+48 600 100 200</a>
+      <a href="#">Instagram</a>
+      <a href="#">Behance</a>
+    </div>
+    <div class="footer__col footer__col--news">
+      <h4>Newsletter</h4>
+      <form class="news" onsubmit="return false">
+        <input type="email" placeholder="Twój e-mail" aria-label="E-mail" required>
+        <button type="submit">Zapisz się</button>
+      </form>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© <span id="year"></span> Misza Photography. Wszystkie prawa zastrzeżone.</span>
+    <span>Warszawa · PL</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/news-data.js"></script>
+<script src="js/post.js"></script>
+</body>
+</html>

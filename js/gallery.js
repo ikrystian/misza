@@ -25,10 +25,16 @@
   function layoutMasonry() {
     grid.classList.add('is-masonry');
     const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
-    cards.forEach((card) => {
-      if (card.classList.contains('is-hidden')) return;
-      const h = card.getBoundingClientRect().height;
-      card.style.gridRowEnd = `span ${Math.max(1, Math.ceil((h + gap) / ROW))}`;
+    // najpierw wszystkie odczyty wysokości, potem wszystkie zapisy —
+    // przeplatanie read/write w jednej pętli wymuszałoby synchroniczny
+    // reflow przy każdym kaflu (layout thrashing) i to właśnie zawieszało
+    // przełączanie kategorii przy większej liczbie kafli
+    const heights = cards.map((card) => (
+      card.classList.contains('is-hidden') ? null : card.getBoundingClientRect().height
+    ));
+    cards.forEach((card, i) => {
+      if (heights[i] === null) return;
+      card.style.gridRowEnd = `span ${Math.max(1, Math.ceil((heights[i] + gap) / ROW))}`;
     });
   }
 
@@ -59,13 +65,22 @@
      ========================================================= */
   cards.forEach((card) => {
     const media = card.querySelector('.card__media');
+    const img = media.querySelector('img');
     const cap = card.querySelector('figcaption');
 
     gsap.set(media, { clipPath: 'inset(0% 0% 100% 0%)' });
+    // transition:transform z CSS (hover) walczy z GSAP o klatki podczas wejścia —
+    // bez wyłączenia jej tutaj obrazek zostaje wizualnie zablokowany w powiększeniu 1.4x
+    gsap.set(img, { transition: 'none' });
 
     gsap.timeline({ scrollTrigger: { trigger: card, start: 'top 90%' } })
       .to(media, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.out' })
-      .from(media.querySelector('img'), { scale: 1.4, duration: 1.5, ease: 'expo.out' }, 0)
+      .from(img, {
+        scale: 1.4,
+        duration: 1.5,
+        ease: 'expo.out',
+        onComplete: () => gsap.set(img, { clearProps: 'transition' }),
+      }, 0)
       .from(cap, { y: 26, opacity: 0, duration: 0.8 }, 0.35);
   });
 
@@ -91,39 +106,62 @@
      FILTRY — animowany układ przez Flip
      ========================================================= */
   const filters = [...document.querySelectorAll('.filter')];
+  const URL_PARAM = 'kategoria';
+
+  function setFilterUrl(cat) {
+    const url = new URL(location.href);
+    if (cat === 'all') url.searchParams.delete(URL_PARAM);
+    else url.searchParams.set(URL_PARAM, cat);
+    history.pushState({ cat }, '', url);
+  }
+
+  function applyFilter(cat, { animate = true, updateUrl = true } = {}) {
+    filters.forEach((b) => b.classList.toggle('is-active', b.dataset.filter === cat));
+    if (updateUrl) setFilterUrl(cat);
+
+    const state = animate && hasFlip ? Flip.getState(cards, { props: 'opacity' }) : null;
+
+    let shown = 0;
+    cards.forEach((card) => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.classList.toggle('is-hidden', !match);
+      if (match) shown++;
+    });
+    empty.classList.toggle('is-shown', shown === 0);
+
+    if (!state) { layoutMasonry(); ScrollTrigger.refresh(); return; }
+
+    Flip.from(state, {
+      duration: 0.75,
+      ease: 'power2.inOut',
+      scale: true,
+      absolute: true,
+      stagger: 0.025,
+      onEnter: (els) => gsap.fromTo(els,
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.6, stagger: 0.04 }),
+      onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.35 }),
+      onComplete: () => { layoutMasonry(); ScrollTrigger.refresh(); }
+    });
+  }
 
   filters.forEach((btn) => {
     btn.addEventListener('click', () => {
       if (btn.classList.contains('is-active')) return;
-      filters.forEach((b) => b.classList.toggle('is-active', b === btn));
-
-      const cat = btn.dataset.filter;
-      const state = hasFlip ? Flip.getState(cards, { props: 'opacity' }) : null;
-
-      let shown = 0;
-      cards.forEach((card) => {
-        const match = cat === 'all' || card.dataset.cat === cat;
-        card.classList.toggle('is-hidden', !match);
-        if (match) shown++;
-      });
-      empty.classList.toggle('is-shown', shown === 0);
-
-      if (!state) { ScrollTrigger.refresh(); return; }
-
-      Flip.from(state, {
-        duration: 0.75,
-        ease: 'power2.inOut',
-        scale: true,
-        absolute: true,
-        stagger: 0.025,
-        onEnter: (els) => gsap.fromTo(els,
-          { opacity: 0, scale: 0.85 },
-          { opacity: 1, scale: 1, duration: 0.6, stagger: 0.04 }),
-        onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.35 }),
-        onComplete: () => { layoutMasonry(); ScrollTrigger.refresh(); }
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  window.addEventListener('popstate', () => {
+    const cat = new URLSearchParams(location.search).get(URL_PARAM) || 'all';
+    applyFilter(cat, { updateUrl: false });
+  });
+
+  // kategoria z adresu URL przy wejściu na stronę (np. link z social mediów)
+  const initialCat = new URLSearchParams(location.search).get(URL_PARAM);
+  if (initialCat && filters.some((b) => b.dataset.filter === initialCat)) {
+    applyFilter(initialCat, { animate: false, updateUrl: false });
+  }
 
   /* =========================================================
      LIGHTBOX

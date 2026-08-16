@@ -11,16 +11,6 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
-
-<div class="preloader" id="preloader">
-  <div class="preloader__inner">
-    <div class="preloader__brand">MISZA</div>
-    <div class="preloader__bar"><span></span></div>
-  </div>
-  <div class="preloader__count"><span id="preCount">0</span><i>%</i></div>
-  <div class="preloader__curtain"></div>
-</div>
-
 <div class="cursor" id="cursor"><span class="cursor__label"></span></div>
 
 <header class="header" id="header">
@@ -29,6 +19,7 @@
     <a href="index.html">Start</a>
     <a href="gallery.html" class="is-active">Galeria</a>
     <a href="index.html#about">O studio</a>
+    <a href="aktualnosci.html">Aktualności</a>
     <a href="index.html#services">Usługi</a>
     <a href="index.html#contact">Kontakt</a>
   </nav>
@@ -53,86 +44,649 @@
 
 <!-- ========== FILTERS ========== -->
 <div class="filters wrap" id="filters">
-  <button class="filter is-active" data-filter="all">Wszystko <sup>10</sup></button>
-  <button class="filter" data-filter="koncerty">Koncerty <sup>3</sup></button>
-  <button class="filter" data-filter="portret">Portret <sup>2</sup></button>
-  <button class="filter" data-filter="reportaz">Reportaż <sup>2</sup></button>
-  <button class="filter" data-filter="street">Street <sup>2</sup></button>
-  <button class="filter" data-filter="natura">Natura <sup>1</sup></button>
+    <button class="filter is-active" data-filter="all">Wszystko <sup>90</sup></button>
+    <button class="filter" data-filter="port">Portret <sup>16</sup></button>
+    <button class="filter" data-filter="slub">Ślub <sup>5</sup></button>
+    <button class="filter" data-filter="wyd">Wydarzenia <sup>22</sup></button>
+    <button class="filter" data-filter="prod">Produkt <sup>12</sup></button>
+    <button class="filter" data-filter="street">Street <sup>7</sup></button>
+    <button class="filter" data-filter="natura">Natura <sup>5</sup></button>
+    <button class="filter" data-filter="art">Sztuka <sup>19</sup></button>
+    <button class="filter" data-filter="obro">Obróbka <sup>4</sup></button>
 </div>
 
 <!-- ========== GRID ========== -->
 <section class="gallery wrap">
   <div class="grid" id="grid">
 
-    <figure class="card" data-cat="portret">
-      <a class="card__media" href="pictures/large/16,9.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/16,9.jpg" width="1000" height="563" alt="Portret w ciemnej charakteryzacji z runami, pole o zmierzchu">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/110049896_649429009029397_5050517569507244440_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/110049896_649429009029397_5050517569507244440_n.jpg" width="1000" height="563" alt="Spojrzenie — portret">
       </a>
-      <figcaption><h3>Runy o zmierzchu</h3><span>Portret</span></figcaption>
+      <figcaption><h3>Spojrzenie</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="koncerty">
-      <a class="card__media" href="pictures/large/61033584_389454628360171_6445582524914597888_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/61033584_389454628360171_6445582524914597888_n.jpg" width="563" height="1000" alt="Czarno-biały kadr z koncertu — gitarzysta przy mikrofonie">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/67634218_426762441296056_3450091179553587200_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/67634218_426762441296056_3450091179553587200_n.jpg" width="800" height="1000" alt="Bliski kadr — portret" loading="lazy">
       </a>
-      <figcaption><h3>Bliżej sceny</h3><span>Koncert</span></figcaption>
+      <figcaption><h3>Bliski kadr</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="portret">
-      <a class="card__media" href="pictures/large/60889505_385481565424144_8041732001494990848_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/60889505_385481565424144_8041732001494990848_n.jpg" width="1000" height="667" alt="Czarno-biały portret uśmiechniętej kobiety w lesie">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/97605673_608548533117445_2836186498636709888_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/97605673_608548533117445_2836186498636709888_n.jpg" width="1000" height="563" alt="Naturalne światło — portret" loading="lazy">
       </a>
-      <figcaption><h3>Śmiech w lesie</h3><span>Portret</span></figcaption>
+      <figcaption><h3>Naturalne światło</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="street">
-      <a class="card__media" href="pictures/large/40640172_279071769398458_162187852111675392_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/40640172_279071769398458_162187852111675392_n.jpg" width="1000" height="561" alt="Czerwone graffiti spływające po czarnej ścianie" loading="lazy">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/97712662_608548243117474_7400346238622629888_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/97712662_608548243117474_7400346238622629888_n.jpg" width="1000" height="563" alt="Cisza w kadrze — portret" loading="lazy">
       </a>
-      <figcaption><h3>Czerwony na czarnym</h3><span>Street</span></figcaption>
+      <figcaption><h3>Cisza w kadrze</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="street">
-      <a class="card__media" href="pictures/large/59285863_377520802886887_2577419142869024768_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/59285863_377520802886887_2577419142869024768_n.jpg" width="667" height="1000" alt="Karuzela wahadłowa na tle błękitnego nieba" loading="lazy">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC00368.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00368.jpg" width="563" height="1000" alt="Twarz i tło — portret" loading="lazy">
       </a>
-      <figcaption><h3>Wahadło</h3><span>Street</span></figcaption>
+      <figcaption><h3>Twarz i tło</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="koncerty">
-      <a class="card__media" href="pictures/large/61163821_389454365026864_6372790439929446400_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/61163821_389454365026864_6372790439929446400_n.jpg" width="1000" height="563" alt="Wokalista z gitarą akustyczną w dymie scenicznym" loading="lazy">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC01326.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC01326.jpg" width="778" height="1000" alt="Miękki kontrast — portret" loading="lazy">
       </a>
-      <figcaption><h3>Solo w dymie</h3><span>Koncert</span></figcaption>
+      <figcaption><h3>Miękki kontrast</h3><span>Portret</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="reportaz">
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC01800.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC01800.JPG" width="667" height="1000" alt="Spojrzenie 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Spojrzenie 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC01838.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC01838.JPG" width="667" height="1000" alt="Bliski kadr 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Bliski kadr 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC02681.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC02681.JPG" width="667" height="1000" alt="Naturalne światło 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Naturalne światło 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC02735.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC02735.JPG" width="667" height="1000" alt="Cisza w kadrze 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Cisza w kadrze 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC02746-2.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC02746-2.JPG" width="1000" height="667" alt="Twarz i tło 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Twarz i tło 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC04171.JPG" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC04171.JPG" width="667" height="1000" alt="Miękki kontrast 2 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Miękki kontrast 2</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC05482.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC05482.jpg" width="1000" height="563" alt="Spojrzenie 3 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Spojrzenie 3</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC090771.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC090771.jpg" width="1000" height="563" alt="Bliski kadr 3 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Bliski kadr 3</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC09411.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09411.jpg" width="1000" height="667" alt="Naturalne światło 3 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Naturalne światło 3</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="port">
+      <a class="card__media" href="pictures/large/DSC09596.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09596.jpg" width="1000" height="1000" alt="Cisza w kadrze 3 — portret" loading="lazy">
+      </a>
+      <figcaption><h3>Cisza w kadrze 3</h3><span>Portret</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="slub">
+      <a class="card__media" href="pictures/large/124111067_728879564417674_6559719384947662607_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/124111067_728879564417674_6559719384947662607_n.jpg" width="667" height="1000" alt="Ten dzień — ślub" loading="lazy">
+      </a>
+      <figcaption><h3>Ten dzień</h3><span>Ślub</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="slub">
+      <a class="card__media" href="pictures/large/124153604_728879591084338_8168190229172178060_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/124153604_728879591084338_8168190229172178060_n.jpg" width="667" height="1000" alt="Przysięga — ślub" loading="lazy">
+      </a>
+      <figcaption><h3>Przysięga</h3><span>Ślub</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="slub">
+      <a class="card__media" href="pictures/large/124182411_728879377751026_8305762450495986271_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/124182411_728879377751026_8305762450495986271_n.jpg" width="1000" height="563" alt="Pierwszy taniec — ślub" loading="lazy">
+      </a>
+      <figcaption><h3>Pierwszy taniec</h3><span>Ślub</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="slub">
+      <a class="card__media" href="pictures/large/DSC07305.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC07305.jpg" width="1000" height="667" alt="Detale dnia — ślub" loading="lazy">
+      </a>
+      <figcaption><h3>Detale dnia</h3><span>Ślub</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="slub">
+      <a class="card__media" href="pictures/large/DSC07448.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC07448.jpg" width="1000" height="667" alt="Wspólna droga — ślub" loading="lazy">
+      </a>
+      <figcaption><h3>Wspólna droga</h3><span>Ślub</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/104051770_623786768260288_776721629264222234_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/104051770_623786768260288_776721629264222234_n.jpg" width="1000" height="563" alt="Na scenie — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Na scenie</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/104183807_625022551470043_8088386626910921449_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/104183807_625022551470043_8088386626910921449_n.jpg" width="1000" height="563" alt="Wieczorny kadr — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Wieczorny kadr</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/117713917_663892544249710_846974367606690646_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/117713917_663892544249710_846974367606690646_n.jpg" width="1000" height="563" alt="W tłumie — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>W tłumie</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/117723101_663892164249748_7972933981667078199_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/117723101_663892164249748_7972933981667078199_n.jpg" width="1000" height="563" alt="Moment energii — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Moment energii</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
       <a class="card__media" href="pictures/large/33.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/33.jpg" width="1000" height="714" alt="Grupowe zdjęcie balowe w sali z balonami" loading="lazy">
+        <img src="pictures/thumbs/33.jpg" width="1000" height="714" alt="Za kulisami — wydarzenia" loading="lazy">
       </a>
-      <figcaption><h3>Wieczór balowy</h3><span>Reportaż</span></figcaption>
+      <figcaption><h3>Za kulisami</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/61033584_389454628360171_6445582524914597888_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/61033584_389454628360171_6445582524914597888_n.jpg" width="563" height="1000" alt="Światła sali — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Światła sali</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/61163821_389454365026864_6372790439929446400_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/61163821_389454365026864_6372790439929446400_n.jpg" width="1000" height="563" alt="Na scenie 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Na scenie 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/61438791_391280501510917_6963280191804145664_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/61438791_391280501510917_6963280191804145664_n.jpg" width="1000" height="667" alt="Wieczorny kadr 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Wieczorny kadr 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/68251907_431472877491679_1457029382714425344_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/68251907_431472877491679_1457029382714425344_n.jpg" width="1000" height="800" alt="W tłumie 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>W tłumie 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/68498507_431472864158347_7698731081398222848_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/68498507_431472864158347_7698731081398222848_n.jpg" width="800" height="1000" alt="Moment energii 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Moment energii 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/69035466_431473044158329_6218382886714736640_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/69035466_431473044158329_6218382886714736640_n.jpg" width="1000" height="800" alt="Za kulisami 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Za kulisami 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/69265946_431472807491686_6606871586400108544_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/69265946_431472807491686_6606871586400108544_n.jpg" width="563" height="1000" alt="Światła sali 2 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Światła sali 2</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/69601250_440385923267041_8703169927290290176_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/69601250_440385923267041_8703169927290290176_n.jpg" width="1000" height="667" alt="Na scenie 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Na scenie 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/87412060_557625238209775_5830701786909900800_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/87412060_557625238209775_5830701786909900800_n.jpg" width="1000" height="667" alt="Wieczorny kadr 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Wieczorny kadr 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03113.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03113.jpg" width="1000" height="667" alt="W tłumie 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>W tłumie 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03136.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03136.jpg" width="1000" height="667" alt="Moment energii 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Moment energii 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03253-2.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03253-2.jpg" width="1000" height="714" alt="Za kulisami 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Za kulisami 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03420.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03420.jpg" width="1000" height="667" alt="Światła sali 3 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Światła sali 3</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03439.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03439.jpg" width="1000" height="667" alt="Na scenie 4 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Na scenie 4</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03657.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03657.jpg" width="1000" height="667" alt="Wieczorny kadr 4 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Wieczorny kadr 4</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC03852.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC03852.jpg" width="1000" height="667" alt="W tłumie 4 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>W tłumie 4</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="wyd">
+      <a class="card__media" href="pictures/large/DSC09560.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09560.jpg" width="1000" height="667" alt="Moment energii 4 — wydarzenia" loading="lazy">
+      </a>
+      <figcaption><h3>Moment energii 4</h3><span>Wydarzenia</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/258789660_950716445567317_2732547357346280139_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/258789660_950716445567317_2732547357346280139_n.jpg" width="1000" height="667" alt="Produkt w kadrze — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Produkt w kadrze</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/59693179_377520952886872_4773483999177736192_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/59693179_377520952886872_4773483999177736192_n.jpg" width="1000" height="563" alt="Detal i forma — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Detal i forma</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC00775.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00775.jpg" width="1000" height="667" alt="Studyjne światło — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Studyjne światło</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC00915.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00915.jpg" width="1000" height="667" alt="Faktura i kolor — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Faktura i kolor</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC00926.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00926.jpg" width="1000" height="667" alt="Czysta kompozycja — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Czysta kompozycja</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC01275.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC01275.jpg" width="800" height="1000" alt="Produkt w kadrze 2 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Produkt w kadrze 2</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC04129.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC04129.jpg" width="1000" height="667" alt="Detal i forma 2 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Detal i forma 2</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC04145.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC04145.jpg" width="1000" height="667" alt="Studyjne światło 2 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Studyjne światło 2</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC04164.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC04164.jpg" width="1000" height="667" alt="Faktura i kolor 2 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Faktura i kolor 2</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC07180-2.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC07180-2.jpg" width="1000" height="667" alt="Czysta kompozycja 2 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Czysta kompozycja 2</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC09176.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09176.jpg" width="1000" height="618" alt="Produkt w kadrze 3 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Produkt w kadrze 3</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="prod">
+      <a class="card__media" href="pictures/large/DSC09224.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09224.jpg" width="1000" height="547" alt="Detal i forma 3 — produkt" loading="lazy">
+      </a>
+      <figcaption><h3>Detal i forma 3</h3><span>Produkt</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/107535135_640902873215344_2874650609355981897_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/107535135_640902873215344_2874650609355981897_n.jpg" width="1000" height="514" alt="Ulica — street" loading="lazy">
+      </a>
+      <figcaption><h3>Ulica</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/201103653_856770731628556_843123702085454802_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/201103653_856770731628556_843123702085454802_n.jpg" width="1000" height="563" alt="Przypadkowy kadr — street" loading="lazy">
+      </a>
+      <figcaption><h3>Przypadkowy kadr</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/67402524_423853211586979_4592203101879926784_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/67402524_423853211586979_4592203101879926784_n.jpg" width="1000" height="667" alt="Miejski rytm — street" loading="lazy">
+      </a>
+      <figcaption><h3>Miejski rytm</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/67774188_423853231586977_5115011071182110720_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/67774188_423853231586977_5115011071182110720_n.jpg" width="1000" height="563" alt="Cień i światło — street" loading="lazy">
+      </a>
+      <figcaption><h3>Cień i światło</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/94194374_595225674449731_5532169442072461312_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/94194374_595225674449731_5532169442072461312_n.jpg" width="1000" height="563" alt="Ulica 2 — street" loading="lazy">
+      </a>
+      <figcaption><h3>Ulica 2</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/94640843_595225957783036_7368858394561609728_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/94640843_595225957783036_7368858394561609728_n.jpg" width="1000" height="563" alt="Przypadkowy kadr 2 — street" loading="lazy">
+      </a>
+      <figcaption><h3>Przypadkowy kadr 2</h3><span>Street</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="street">
+      <a class="card__media" href="pictures/large/DSC07515.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC07515.jpg" width="1000" height="563" alt="Miejski rytm 2 — street" loading="lazy">
+      </a>
+      <figcaption><h3>Miejski rytm 2</h3><span>Street</span></figcaption>
     </figure>
 
     <figure class="card" data-cat="natura">
-      <a class="card__media" href="pictures/large/51762740_340435736595394_2236379128745951232_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/51762740_340435736595394_2236379128745951232_n.jpg" width="1000" height="563" alt="Dwa owoce na gałązce, rozmyte tło" loading="lazy">
+      <a class="card__media" href="pictures/large/DSC00396.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00396.jpg" width="1000" height="667" alt="Zbliżenie — natura" loading="lazy">
       </a>
-      <figcaption><h3>Na gałązce</h3><span>Natura</span></figcaption>
+      <figcaption><h3>Zbliżenie</h3><span>Natura</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="koncerty">
-      <a class="card__media" href="pictures/large/61438791_391280501510917_6963280191804145664_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/61438791_391280501510917_6963280191804145664_n.jpg" width="1000" height="667" alt="Duet na scenie w niebieskim świetle reflektorów" loading="lazy">
+    <figure class="card" data-cat="natura">
+      <a class="card__media" href="pictures/large/DSC05781-2.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC05781-2.jpg" width="1000" height="667" alt="Naturalna forma — natura" loading="lazy">
       </a>
-      <figcaption><h3>Niebieska scena</h3><span>Koncert</span></figcaption>
+      <figcaption><h3>Naturalna forma</h3><span>Natura</span></figcaption>
     </figure>
 
-    <figure class="card" data-cat="reportaz">
-      <a class="card__media" href="pictures/large/59693179_377520952886872_4773483999177736192_n.jpg" data-cursor="Podgląd">
-        <img src="pictures/thumbs/59693179_377520952886872_4773483999177736192_n.jpg" width="1000" height="563" alt="Kolejka górska z pasażerami na tle błękitnego nieba" loading="lazy">
+    <figure class="card" data-cat="natura">
+      <a class="card__media" href="pictures/large/DSC06069.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC06069.jpg" width="1000" height="667" alt="Cisza natury — natura" loading="lazy">
       </a>
-      <figcaption><h3>Pętla</h3><span>Reportaż</span></figcaption>
+      <figcaption><h3>Cisza natury</h3><span>Natura</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="natura">
+      <a class="card__media" href="pictures/large/DSC06217.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC06217.jpg" width="1000" height="667" alt="Kolory sezonu — natura" loading="lazy">
+      </a>
+      <figcaption><h3>Kolory sezonu</h3><span>Natura</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="natura">
+      <a class="card__media" href="pictures/large/DSC06251.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC06251.jpg" width="1000" height="667" alt="Zbliżenie 2 — natura" loading="lazy">
+      </a>
+      <figcaption><h3>Zbliżenie 2</h3><span>Natura</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/100074212_613479499291015_6286031082642997248_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/100074212_613479499291015_6286031082642997248_n.jpg" width="1000" height="563" alt="Forma i cień — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Forma i cień</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/109518450_646965705942394_1159786611717049934_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/109518450_646965705942394_1159786611717049934_n.jpg" width="667" height="1000" alt="Eksperyment — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Eksperyment</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/120845571_703144906991140_7810185792243016831_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/120845571_703144906991140_7810185792243016831_n.jpg" width="1000" height="563" alt="Poza ramą — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Poza ramą</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/120910900_703144900324474_3419176819082300123_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/120910900_703144900324474_3419176819082300123_n.jpg" width="1000" height="563" alt="Kontrast i emocja — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kontrast i emocja</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/126786193_738905190081778_7675225924169422452_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/126786193_738905190081778_7675225924169422452_n.jpg" width="563" height="1000" alt="Kadr koncepcyjny — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kadr koncepcyjny</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/195082198_850165398955756_5075397433072135946_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/195082198_850165398955756_5075397433072135946_n.jpg" width="1000" height="563" alt="Ciemna strona — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Ciemna strona</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/199843337_856218875017075_8412077201974023249_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/199843337_856218875017075_8412077201974023249_n.jpg" width="1000" height="774" alt="Forma i cień 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Forma i cień 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/247118309_932600610712234_5254550562655792483_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/247118309_932600610712234_5254550562655792483_n.jpg" width="1000" height="823" alt="Eksperyment 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Eksperyment 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/40640172_279071769398458_162187852111675392_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/40640172_279071769398458_162187852111675392_n.jpg" width="1000" height="561" alt="Poza ramą 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Poza ramą 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/67688761_427757537863213_4740500016144056320_n.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/67688761_427757537863213_4740500016144056320_n.jpg" width="800" height="1000" alt="Kontrast i emocja 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kontrast i emocja 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/Album.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/Album.jpg" width="1000" height="1000" alt="Kadr koncepcyjny 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kadr koncepcyjny 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC00454.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00454.jpg" width="1000" height="975" alt="Ciemna strona 2 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Ciemna strona 2</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC00597.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00597.jpg" width="1000" height="1000" alt="Forma i cień 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Forma i cień 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC00598.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00598.jpg" width="1000" height="667" alt="Eksperyment 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Eksperyment 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC00639-2.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00639-2.jpg" width="667" height="1000" alt="Poza ramą 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Poza ramą 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC0101911.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC0101911.jpg" width="1000" height="593" alt="Kontrast i emocja 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kontrast i emocja 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC01573xx.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC01573xx.jpg" width="563" height="1000" alt="Kadr koncepcyjny 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Kadr koncepcyjny 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC0920811.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC0920811.jpg" width="1000" height="771" alt="Ciemna strona 3 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Ciemna strona 3</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="art">
+      <a class="card__media" href="pictures/large/DSC09898.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC09898.jpg" width="667" height="1000" alt="Forma i cień 4 — sztuka" loading="lazy">
+      </a>
+      <figcaption><h3>Forma i cień 4</h3><span>Sztuka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="obro">
+      <a class="card__media" href="pictures/large/1.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/1.jpg" width="778" height="1000" alt="Przed i po — obróbka" loading="lazy">
+      </a>
+      <figcaption><h3>Przed i po</h3><span>Obróbka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="obro">
+      <a class="card__media" href="pictures/large/2.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/2.jpg" width="778" height="1000" alt="Warsztat retuszu — obróbka" loading="lazy">
+      </a>
+      <figcaption><h3>Warsztat retuszu</h3><span>Obróbka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="obro">
+      <a class="card__media" href="pictures/large/DSC00842-3.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00842-3.jpg" width="1000" height="667" alt="Detal obróbki — obróbka" loading="lazy">
+      </a>
+      <figcaption><h3>Detal obróbki</h3><span>Obróbka</span></figcaption>
+    </figure>
+
+    <figure class="card" data-cat="obro">
+      <a class="card__media" href="pictures/large/DSC00842.jpg" data-cursor="Podgląd">
+        <img src="pictures/thumbs/DSC00842.jpg" width="1000" height="667" alt="Przed i po 2 — obróbka" loading="lazy">
+      </a>
+      <figcaption><h3>Przed i po 2</h3><span>Obróbka</span></figcaption>
     </figure>
 
   </div>
@@ -161,6 +715,7 @@
       <a href="index.html">Start</a>
       <a href="gallery.html">Galeria</a>
       <a href="index.html#about">O studio</a>
+      <a href="aktualnosci.html">Aktualności</a>
       <a href="index.html#services">Usługi</a>
     </div>
     <div class="footer__col">
