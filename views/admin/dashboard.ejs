@@ -1,0 +1,23 @@
+<%- include('partials/shell-start', { title: 'Panel', username, active: 'dashboard' }) %>
+
+<header class="admin__head">
+  <h1>Witaj, <%= username %></h1>
+  <p>Panel administratora strony MISZA. Edytuj galerię, kategorie, aktualności i treść strony głównej.</p>
+</header>
+
+<div class="admin-stats">
+  <a class="admin-stat" href="/admin/gallery">
+    <span class="admin-stat__value"><%= stats.photos %></span>
+    <span class="admin-stat__label">zdjęć w galerii</span>
+  </a>
+  <a class="admin-stat" href="/admin/gallery">
+    <span class="admin-stat__value"><%= stats.categories %></span>
+    <span class="admin-stat__label">kategorii</span>
+  </a>
+  <a class="admin-stat" href="/admin/news">
+    <span class="admin-stat__value"><%= stats.posts %></span>
+    <span class="admin-stat__label">wpisów aktualności</span>
+  </a>
+</div>
+
+<%- include('partials/shell-end') %>

@@ -1,0 +1,42 @@
+<%- include('partials/shell-start', { title: mode === 'create' ? 'Nowe zdjęcie' : 'Edytuj zdjęcie', username, active: 'gallery' }) %>
+
+<header class="admin__head">
+  <a href="/admin/gallery" class="admin-back">← Wróć do galerii</a>
+  <h1><%= mode === 'create' ? 'Nowe zdjęcie' : 'Edytuj zdjęcie' %></h1>
+</header>
+
+<form id="galleryForm" class="admin-form" enctype="multipart/form-data">
+  <div class="admin-form__preview">
+    <img id="imagePreview" src="<%= item ? pic(item.file, 'thumbs') : '' %>" alt="" <%= item ? '' : 'hidden' %>>
+  </div>
+  <label>
+    <span>Zdjęcie<%= mode === 'create' ? ' (wymagane)' : ' — zostaw puste, aby nie zmieniać' %></span>
+    <input type="file" name="image" accept="image/jpeg,image/png,image/webp" id="imageInput" <%= mode === 'create' ? 'required' : '' %>>
+  </label>
+  <label>
+    <span>Tytuł</span>
+    <input type="text" name="title" value="<%= item ? item.title : '' %>" required>
+  </label>
+  <label>
+    <span>Opis (alt)</span>
+    <input type="text" name="alt" value="<%= item ? item.alt : '' %>">
+  </label>
+  <label>
+    <span>Kategoria</span>
+    <select name="category" required>
+      <% categories.forEach(function(c) { %>
+      <option value="<%= c.slug %>"<%= item && item.category === c.slug ? ' selected' : '' %>><%= c.label %></option>
+      <% }); %>
+    </select>
+  </label>
+  <div class="admin-form__actions">
+    <button type="submit" class="admin-btn"><%= mode === 'create' ? 'Dodaj zdjęcie' : 'Zapisz zmiany' %></button>
+    <% if (mode === 'edit') { %>
+    <button type="button" class="admin-btn admin-btn--danger" id="deleteBtn">Usuń zdjęcie</button>
+    <% } %>
+  </div>
+  <p class="admin-form__error" id="formError" hidden></p>
+</form>
+
+<script id="initial-data" type="application/json"><%- jsonScript({ mode: mode, id: item ? item.id : null }) %></script>
+<%- include('partials/shell-end') %>

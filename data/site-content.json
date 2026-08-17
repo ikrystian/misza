@@ -1,0 +1,219 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "file": "109518450-646965705942394-1159786611717049934-n-mswlz56m.jpg",
+        "variant": "large",
+        "alt": "Dramatyczny męski portret w ciemnej tonacji, mocne boczne światło",
+        "eyebrow": "Portret",
+        "title": "Światło i cień"
+      },
+      {
+        "file": "61438791_391280501510917_6963280191804145664_n.jpg",
+        "variant": "large",
+        "alt": "Duet na scenie w niebieskim świetle reflektorów",
+        "eyebrow": "Koncert",
+        "title": "Niebieska scena"
+      },
+      {
+        "file": "40640172_279071769398458_162187852111675392_n.jpg",
+        "variant": "large",
+        "alt": "Czerwone graffiti spływające po czarnej ścianie",
+        "eyebrow": "Street",
+        "title": "Czerwony na czarnym"
+      },
+      {
+        "file": "59693179_377520952886872_4773483999177736192_n.jpg",
+        "variant": "large",
+        "alt": "Kolejka górska z pasażerami na tle błękitnego nieba",
+        "eyebrow": "Reportaż",
+        "title": "Pętla"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "01 // O studio",
+    "heading": "Zatrzymuję to, czego nie da się powtórzyć",
+    "text": "Misza to studio fotografii modowej i portretowej z Warszawy. Pracuję światłem zastanym, analogowym ziarnem i ciszą — bez pośpiechu, bez pozy na siłę. Każda sesja zaczyna się od rozmowy, a kończy zestawem kadrów, do których wraca się po latach.",
+    "images": [
+      {
+        "file": "61033584_389454628360171_6445582524914597888_n.jpg",
+        "variant": "large",
+        "alt": "Czarno-biały kadr z koncertu — gitarzysta przy mikrofonie",
+        "size": "main"
+      },
+      {
+        "file": "94194374_595225674449731_5532169442072461312_n.jpg",
+        "variant": "large",
+        "alt": "Dwie osoby w maskach na dachu budynku pokrytego graffiti",
+        "size": "small"
+      }
+    ],
+    "stats": [
+      {
+        "value": "12",
+        "label": "lat za aparatem"
+      },
+      {
+        "value": "240+",
+        "label": "zrealizowanych sesji"
+      },
+      {
+        "value": "18",
+        "label": "publikacji w magazynach"
+      }
+    ]
+  },
+  "showcase": {
+    "eyebrow": "02 // Wybrane kadry",
+    "heading": "Przewiń\nw bok",
+    "lead": "Pięć kadrów z ostatnich sezonów — scena, portret i to, co pomiędzy.",
+    "items": [
+      {
+        "file": "DSC09411.jpg",
+        "variant": "thumbs",
+        "alt": "Czarno-biały portret studyjny kobiety owiniętej w dżinsową kurtkę",
+        "width": 1000,
+        "height": 667,
+        "title": "Ukryta w kołnierzu",
+        "subtitle": "Portret · 2025"
+      },
+      {
+        "file": "61163821_389454365026864_6372790439929446400_n.jpg",
+        "variant": "thumbs",
+        "alt": "Wokalista z gitarą akustyczną w dymie scenicznym",
+        "width": 1000,
+        "height": 563,
+        "title": "Solo w dymie",
+        "subtitle": "Koncert · 2025"
+      },
+      {
+        "file": "61033584_389454628360171_6445582524914597888_n.jpg",
+        "variant": "thumbs",
+        "alt": "Czarno-biały kadr z koncertu — gitarzysta przy mikrofonie",
+        "width": 563,
+        "height": 1000,
+        "title": "Bliżej sceny",
+        "subtitle": "Koncert · 2024"
+      },
+      {
+        "file": "33.jpg",
+        "variant": "thumbs",
+        "alt": "Grupowe zdjęcie balowe w sali z balonami",
+        "width": 1000,
+        "height": 714,
+        "title": "Wieczór balowy",
+        "subtitle": "Reportaż · 2024"
+      },
+      {
+        "file": "DSC06069.jpg",
+        "variant": "thumbs",
+        "alt": "Pomarańczowa lilia pośród traw, miękkie bokeh",
+        "width": 1000,
+        "height": 667,
+        "title": "Na łące",
+        "subtitle": "Natura · 2024"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "04 // Usługi",
+    "heading": "Co robię najlepiej",
+    "items": [
+      {
+        "number": "01",
+        "title": "Sesje modowe",
+        "tags": "Editorial · Lookbook · Kampanie",
+        "file": "247118309_932600610712234_5254550562655792483_n.jpg",
+        "variant": "thumbs"
+      },
+      {
+        "number": "02",
+        "title": "Portret",
+        "tags": "Studio · Plener · Wizerunek",
+        "file": "DSC090771.jpg",
+        "variant": "thumbs"
+      },
+      {
+        "number": "03",
+        "title": "Beauty & Still life",
+        "tags": "Kosmetyki · Biżuteria · Detal",
+        "file": "DSC00775.jpg",
+        "variant": "thumbs"
+      },
+      {
+        "number": "04",
+        "title": "Reportaż",
+        "tags": "Backstage · Wydarzenia · Dokument",
+        "file": "33.jpg",
+        "variant": "thumbs"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "05 // Kontakt",
+    "heading": "Zróbmy coś pięknego",
+    "text": "Terminy na sezon 2026 są już otwarte. Napisz kilka zdań o pomyśle — odpiszę w 24 h.",
+    "email": "studio@misza.photo",
+    "backgroundFile": "61163821_389454365026864_6372790439929446400_n.jpg",
+    "backgroundVariant": "large"
+  },
+  "instagram": {
+    "handle": "@misza.photo",
+    "profileUrl": "#",
+    "items": [
+      {
+        "file": "110049896_649429009029397_5050517569507244440_n.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      },
+      {
+        "file": "61033584_389454628360171_6445582524914597888_n.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      },
+      {
+        "file": "DSC09411.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      },
+      {
+        "file": "40640172_279071769398458_162187852111675392_n.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      },
+      {
+        "file": "94194374_595225674449731_5532169442072461312_n.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      },
+      {
+        "file": "61163821_389454365026864_6372790439929446400_n.jpg",
+        "variant": "thumbs",
+        "alt": "",
+        "link": "#"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Studio fotografii modowej i portretowej.",
+    "address": "Warszawa, ul. Wilcza 28",
+    "email": "studio@misza.photo",
+    "phone": "+48 600 100 200",
+    "social": [
+      {
+        "label": "Instagram",
+        "url": "#"
+      },
+      {
+        "label": "Behance",
+        "url": "#"
+      }
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<%- include('partials/head', {
+  title: post ? post.title + ' — MISZA' : 'Nie znaleziono wpisu — MISZA',
+  description: post ? post.excerpt : 'Aktualności ze studia Misza.'
+}) %>
+</head>
+<body class="is-loading">
+<%- include('partials/header', { active: 'news', onHome: false }) %>
+
+<% if (!post) { %>
+<!-- ========== WPIS NIE ZNALEZIONY ========== -->
+<section class="pagehead post-notfound">
+  <div class="wrap">
+    <p class="eyebrow">404</p>
+    <h1 class="display display--xl">Nie znaleziono<br>tego wpisu</h1>
+    <p class="lead">Ten adres nie prowadzi już do żadnej aktualności — mógł zostać przeniesiony albo usunięty.</p>
+    <a href="/aktualnosci.html" class="btn-line magnetic"><span>Wróć do aktualności</span><i></i></a>
+  </div>
+</section>
+<% } else { %>
+
+<div id="postContent">
+
+  <!-- ========== NAGŁÓWEK WPISU ========== -->
+  <section class="post-head">
+    <div class="wrap">
+      <a href="/aktualnosci.html" class="post-head__back"><i></i><span>Wszystkie wpisy</span></a>
+      <p class="post-head__meta" data-anim="fade">
+        <b><%= post.category %></b><i></i><span><%= dateLabelPl(post.date) %></span><i></i><span><%= post.readTime %> czytania</span>
+      </p>
+      <h1 class="display display--xl" data-anim="fade"><%= post.title %></h1>
+      <p class="lead pagehead__lead" data-anim="fade"><%= post.excerpt %></p>
+    </div>
+  </section>
+
+  <!-- ========== ZDJĘCIE GŁÓWNE ========== -->
+  <section class="post-hero">
+    <div class="wrap">
+      <figure class="post-hero__media reveal-img">
+        <img src="<%= pic(post.image, 'large') %>" alt="<%= post.imageAlt %>">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========== TREŚĆ ========== -->
+  <article class="post-body wrap" data-anim="fade">
+    <% post.content.forEach(function(block) { %>
+      <% if (block.type === 'quote') { %>
+    <blockquote><%= block.text %></blockquote>
+      <% } else { %>
+    <p><%= block.text %></p>
+      <% } %>
+    <% }); %>
+  </article>
+
+  <div class="wrap post-body" style="padding-top:0">
+    <div class="post-tags" data-anim="fade">
+      <span><%= post.category %></span>
+      <span>Misza Photography</span>
+      <span>Warszawa <%= post.date.slice(0, 4) %></span>
+    </div>
+    <div class="post-share" data-anim="fade">
+      <span>Udostępnij</span>
+      <a href="mailto:?subject=<%= encodeURIComponent(post.title) %>&body=<%= encodeURIComponent(shareUrl) %>">E-mail</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(shareUrl) %>" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=<%= encodeURIComponent(shareUrl) %>&text=<%= encodeURIComponent(post.title) %>" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+
+  <% if (hasMultiplePosts) { %>
+  <!-- ========== NAWIGACJA MIĘDZY WPISAMI ========== -->
+  <nav class="post-nav" data-anim="fade">
+    <a class="post-nav__item post-nav__item--prev" href="/post.html?slug=<%= prevPost.slug %>" data-cursor="Czytaj">
+      <span class="post-nav__label"><i></i><span>Poprzedni wpis</span></span>
+      <span class="post-nav__title"><%= prevPost.title %></span>
+    </a>
+    <a class="post-nav__item post-nav__item--next" href="/post.html?slug=<%= nextPost.slug %>" data-cursor="Czytaj">
+      <span class="post-nav__label"><span>Następny wpis</span><i></i></span>
+      <span class="post-nav__title"><%= nextPost.title %></span>
+    </a>
+  </nav>
+  <% } %>
+
+  <% if (related.length) { %>
+  <!-- ========== POWIĄZANE WPISY ========== -->
+  <section class="post-related">
+    <div class="wrap">
+      <header class="section__head">
+        <p class="eyebrow" data-anim="fade">Zobacz też</p>
+        <h2 class="display" data-split>Powiązane wpisy</h2>
+      </header>
+      <div class="news-grid">
+        <% related.forEach(function(p) { %>
+        <article class="news-card">
+          <a class="news-card__media" href="/post.html?slug=<%= p.slug %>" data-cursor="Czytaj">
+            <span class="news-card__cat"><%= p.category %></span>
+            <img src="<%= pic(p.image, 'thumbs') %>" alt="<%= p.imageAlt %>" loading="lazy">
+          </a>
+          <div class="news-card__body">
+            <span class="news-card__meta"><%= dateLabelPl(p.date) %><i></i><%= p.readTime %> czytania</span>
+            <h3 class="news-card__title"><a href="/post.html?slug=<%= p.slug %>"><%= p.title %></a></h3>
+            <p class="news-card__excerpt"><%= p.excerpt %></p>
+            <a href="/post.html?slug=<%= p.slug %>" class="news-card__link"><span>Czytaj dalej</span><i></i></a>
+          </div>
+        </article>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+  <% } %>
+
+</div>
+
+<!-- ========== CTA ========== -->
+<section class="cta" id="contact">
+  <div class="cta__bg"><img src="<%= pic(ctaImage, 'large') %>" alt="" loading="lazy"></div>
+  <div class="wrap cta__inner">
+    <p class="eyebrow" data-anim="fade">Kontakt</p>
+    <h2 class="display display--xl" data-split>Zróbmy coś pięknego</h2>
+    <a href="mailto:studio@misza.photo" class="btn-line btn-line--lg magnetic"><span>studio@misza.photo</span><i></i></a>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/footer', { footer: content.footer, onHome: false }) %>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

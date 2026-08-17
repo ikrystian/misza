@@ -1,0 +1,38 @@
+{
+  "name": "misza",
+  "version": "1.0.0",
+  "description": "Statyczna strona portfolio inspirowana motywem **Kimono** (`home-six` + `gallery-modern-col-3`): ciemna paleta, typografia Sora / DM Sans / Playfair Display, pełnoekranowy slider i kreatywna galeria z animacjami GSAP.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "migrate": "node scripts/migrate-gallery.js && node scripts/migrate-news.js && node scripts/migrate-content.js",
+    "images:regenerate": "node scripts/regenerate-images.js",
+    "hash-password": "node scripts/hash-password.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikrystian/misza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ikrystian/misza/issues"
+  },
+  "homepage": "https://github.com/ikrystian/misza#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.2.0",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "nodemon": "^3.1.14"
+  }
+}

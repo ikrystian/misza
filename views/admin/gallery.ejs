@@ -1,0 +1,27 @@
+<%- include('partials/shell-start', { title: 'Galeria', username, active: 'gallery' }) %>
+
+<header class="admin__head admin__head--row">
+  <div>
+    <h1>Galeria</h1>
+    <p>Zarządzaj zdjęciami, kategoriami i ich kolejnością.</p>
+  </div>
+  <a href="/admin/gallery/new" class="admin-btn">+ Dodaj zdjęcie</a>
+</header>
+
+<section class="admin-panel">
+  <h2>Kategorie</h2>
+  <form id="categoryForm" class="admin-inline-form">
+    <input type="text" name="label" placeholder="Nazwa nowej kategorii" required>
+    <button type="submit" class="admin-btn">Dodaj</button>
+  </form>
+  <p class="admin-form__error" id="categoryError" hidden></p>
+  <ul class="admin-category-list" id="categoryList"></ul>
+</section>
+
+<section class="admin-panel">
+  <h2>Zdjęcia <span class="admin-hint">przeciągnij kafelek, żeby zmienić kolejność</span></h2>
+  <div class="admin-gallery-grid" id="galleryGrid"></div>
+</section>
+
+<script id="initial-data" type="application/json"><%- jsonScript({ gallery, categories }) %></script>
+<%- include('partials/shell-end') %>

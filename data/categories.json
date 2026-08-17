@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "port",
+    "label": "Portret",
+    "order": 1
+  },
+  {
+    "slug": "slub",
+    "label": "Ślub",
+    "order": 2
+  },
+  {
+    "slug": "wyd",
+    "label": "Wydarzenia",
+    "order": 3
+  },
+  {
+    "slug": "prod",
+    "label": "Produkt",
+    "order": 4
+  },
+  {
+    "slug": "street",
+    "label": "Street",
+    "order": 5
+  },
+  {
+    "slug": "natura",
+    "label": "Natura",
+    "order": 6
+  },
+  {
+    "slug": "art",
+    "label": "Sztuka",
+    "order": 7
+  },
+  {
+    "slug": "obro",
+    "label": "Obróbka",
+    "order": 8
+  }
+]

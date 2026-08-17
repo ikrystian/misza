@@ -1,34 +1,85 @@
 # MISZA — portfolio fotografa
 
-Statyczna strona portfolio inspirowana motywem **Kimono** (`home-six` + `gallery-modern-col-3`):
+Strona portfolio inspirowana motywem **Kimono** (`home-six` + `gallery-modern-col-3`):
 ciemna paleta, typografia Sora / DM Sans / Playfair Display, pełnoekranowy slider
 i kreatywna galeria z animacjami GSAP.
+
+Strony publiczne są renderowane po stronie serwera (Express + EJS) na podstawie danych
+z `data/*.json`, a całą treścią — galerią, kategoriami, aktualnościami i sekcjami strony
+głównej — zarządza się przez panel administratora pod `/admin`.
 
 ## Uruchomienie
 
 ```bash
-python3 -m http.server 4173
+npm install
+cp .env.example .env
+npm run hash-password   # wygeneruj hash hasła administratora i wklej do .env jako ADMIN_PASSWORD_HASH
 ```
 
-Następnie otwórz `http://localhost:4173`. Serwer jest potrzebny — otwarcie plików przez
-`file://` zablokuje część zasobów.
+W `.env` uzupełnij też `ADMIN_USERNAME` i `SESSION_SECRET` (losowy długi ciąg znaków, np.
+`node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"`).
+
+```bash
+npm run dev     # z auto-restartem (nodemon)
+# albo
+npm start        # produkcyjnie, np. pod systemd/pm2
+```
+
+Następnie otwórz `http://localhost:4173`. Panel administratora jest pod `/admin/login`.
 
 ## Struktura
 
 ```
-index.html      strona główna (slider, o studio, poziomy showcase, usługi, kontakt)
-gallery.html    galeria 3-kolumnowa z filtrami i lightboxem
-css/style.css   całość stylów (zmienne w :root)
-js/app.js       warstwa wspólna: preloader, kursor, header, smooth scroll, reveal
-js/home.js      slider hero, pinowany showcase, podgląd usług, liczniki
-js/gallery.js   filtry (Flip), tilt 3D, lightbox
+server/                serwer Express
+  app.js                konfiguracja, middleware, montowanie tras
+  index.js               punkt wejścia (nasłuchuje na PORT)
+  config/env.js           wczytywanie i walidacja .env
+  middleware/              auth (requireAuth), upload (multer)
+  routes/                   /api/* (CRUD), /admin/* (panel), strony publiczne
+  controllers/               logika tras
+  services/                   dataStore (odczyt/zapis JSON), imageService (sharp), slugify
+views/                  szablony EJS
+  index.ejs, gallery.ejs, aktualnosci.ejs, post.ejs    strony publiczne
+  partials/                                              head/header/footer, wspólne dla stron
+  admin/                                                 panel administratora
+data/                   treść strony jako JSON (jedyne źródło prawdy)
+  gallery.json, categories.json, news.json, site-content.json
+public/admin/           statyczny CSS/JS panelu administratora
+scripts/                skrypty pomocnicze (migracja, hash hasła, masowa regeneracja miniatur)
+css/style.css           style strony publicznej (zmienne w :root)
+js/app.js               warstwa wspólna: preloader, kursor, header, smooth scroll, reveal
+js/home.js              slider hero, pinowany showcase, podgląd usług, liczniki
+js/gallery.js           filtry (Flip), tilt 3D, lightbox
+pictures/thumbs/        miniatury (1000px), generowane automatycznie przez panel
+pictures/large/         wersje do lightboxa (2000px), generowane automatycznie przez panel
+```
+
+## Panel administratora
+
+Pod `/admin` (login: `ADMIN_USERNAME` / hasło ustawione przy `npm run hash-password`):
+
+- **Galeria** (`/admin/gallery`) — dodawanie/edycja/usuwanie zdjęć, zmiana kolejności
+  przeciąganiem, zarządzanie kategoriami (liczniki przeliczają się automatycznie).
+- **Aktualności** (`/admin/news`) — CRUD wpisów, edytor treści blokowej (akapity/cytaty).
+- **Treść strony** (`/admin/content`) — edycja sekcji strony głównej: hero, o studio,
+  wybrane kadry, usługi, kontakt (CTA), Instagram, stopka.
+
+Każde wgrane zdjęcie automatycznie dostaje warianty `thumbs/` (1000px, jakość 82) i
+`large/` (2000px, jakość 86) — generowane przez `sharp`, z tymi samymi parametrami co
+dawny ręczny pipeline ImageMagick. Stare warianty są usuwane przy podmianie lub kasowaniu
+zdjęcia.
+
+Jeśli zdjęcia trafią do `pictures/` z pominięciem panelu (ręcznie, po podfolderach
+kategorii), warianty można przeliczyć zbiorczo:
+
+```bash
+npm run images:regenerate
 ```
 
 ## Animacje
 
 | Efekt | Gdzie |
 |---|---|
-| Preloader z licznikiem i odsłonięciem kurtyny | `app.js` → `runPreloader` |
 | Podążający kursor z etykietą (`data-cursor="…"`) | `app.js` → `initCursor` |
 | Nagłówki dzielone na linie w maskach (`data-split`) | `app.js` → `splitLines` |
 | Reveal obrazów maską clip-path (`.reveal-img`) | `app.js` → `initReveals` |
@@ -41,58 +92,21 @@ js/gallery.js   filtry (Flip), tilt 3D, lightbox
 | Masonry w oryginalnych proporcjach zdjęć | `gallery.js` → `layoutMasonry` |
 | Tilt 3D kafli + lightbox z przejściem z miniatury | `gallery.js` |
 
-Zależności ładowane z CDN: GSAP 3.13 (+ ScrollTrigger, Flip) i Lenis.
-Gdy CDN jest niedostępny, strona degraduje się do wersji statycznej — preloader znika,
-a treść pozostaje dostępna. Respektowane jest też `prefers-reduced-motion`.
+Zależności ładowane z CDN: GSAP 3.13 (+ ScrollTrigger, Flip) i Lenis. Strony renderowane
+są po stronie serwera z identycznym markupem co wcześniej w statycznych plikach HTML —
+dzięki temu cały ten JS działa bez zmian, tak jakby DOM był tam od zawsze. Gdy CDN jest
+niedostępny, strona degraduje się do wersji statycznej. Respektowane jest też
+`prefers-reduced-motion`.
 
-## Zdjęcia
+## Model danych
 
-**Galeria** korzysta z prawdziwych zdjęć z `pictures/`. Obok oryginałów leżą dwa wygenerowane
-warianty (ImageMagick):
+- `data/gallery.json` — zdjęcia galerii: `{ id, category, title, alt, file, width, height, order }`.
+- `data/categories.json` — kategorie filtrów: `{ slug, label, order }` (liczniki liczone w locie).
+- `data/news.json` — wpisy aktualności: `{ slug, category, date, title, excerpt, readTime, image, imageAlt, content: [{type: 'p'|'quote', text}] }`.
+- `data/site-content.json` — sekcje strony głównej (hero, about, showcase, services, cta,
+  instagram, footer).
 
-```
-pictures/            oryginały (do 6000 px, ~14 MB razem)
-pictures/thumbs/     miniatury do siatki, dłuższy bok 1000 px (~930 KB razem)
-pictures/large/      wersje do lightboxa, dłuższy bok 2000 px (~3,5 MB razem)
-```
-
-Regeneracja po dorzuceniu nowych plików:
-
-```bash
-cd pictures && for f in *.jpg; do magick "$f" -auto-orient -strip -resize '1000x1000>' -quality 82 -interlace Plane "thumbs/$f"; magick "$f" -auto-orient -strip -resize '2000x2000>' -quality 86 -interlace Plane "large/$f"; done
-```
-
-Nowy kafel w `gallery.html` wygląda tak — **atrybuty `width`/`height` muszą odpowiadać
-wymiarom miniatury**, bo z nich wynikają proporcje kadru i rezerwacja miejsca przed wczytaniem:
-
-```html
-<figure class="card" data-cat="koncerty">
-  <a class="card__media" href="pictures/large/plik.jpg" data-cursor="Podgląd">
-    <img src="pictures/thumbs/plik.jpg" width="1000" height="563" alt="Opis" loading="lazy">
-  </a>
-  <figcaption><h3>Tytuł</h3><span>Koncert</span></figcaption>
-</figure>
-```
-
-Miniatury zachowują **oryginalne proporcje** i pełne kolory — układ masonry (`js/gallery.js`
-→ `layoutMasonry`) liczy `grid-row-end: span N` z rzeczywistej wysokości kafla, więc kolumny
-domykają się bez dziur. `ResizeObserver` przelicza spany po zmianie szerokości, dociągnięciu
-fontu czy zawinięciu tytułu. Bez JS siatka degraduje się do zwykłych trzech kolumn.
-
-**Strona główna** korzysta z tych samych zdjęć — bez placeholderów i bez `grayscale`:
-
-| Sekcja | Wariant | Uwagi |
-|---|---|---|
-| Hero (4 slajdy) | `large/` | pełny ekran, `object-fit: cover` |
-| O studio (2) | `large/` | kadry 3:4 i 4:5, użyte zdjęcia pionowe → minimalne przycięcie |
-| Showcase (5) | `thumbs/` | pełne kadry, stała wysokość, szerokość z proporcji |
-| Podgląd usług (4) | `thumbs/` | `data-img` na `.svc__row` |
-| Instagram (6) | `thumbs/` | kwadratowy kadr, jak w siatce IG |
-| Tło CTA | `large/` | przyciemnione, parallax |
-
-Poziomy showcase nie przycina zdjęć: wysokość jest stała
-(`clamp(300px, 54vh, 540px)`), a szerokość kafla wynika z proporcji obrazka. Poniżej 900 px
-zamienia się to na stałą szerokość i naturalną wysokość, żeby kadr 16:9 mieścił się w ekranie.
+`file`/`image` to nazwa pliku wspólna dla `pictures/thumbs/<plik>` i `pictures/large/<plik>`.
 
 ## Dostosowanie
 
@@ -102,7 +116,3 @@ Kolory i typografia siedzą w zmiennych CSS na górze `css/style.css`:
 --bg:#151515;  --accent:#c8a97e;  --text:#ddd;
 --f-ui:'Sora';  --f-head:'DM Sans';  --f-serif:'Playfair Display';
 ```
-
-Kategorie filtrów w galerii wynikają z `data-cat` na `.card` i `data-filter` na `.filter` —
-liczniki przy nazwach (`<sup>`) są wpisane ręcznie. Aktualnie: koncerty (3), portret (2),
-reportaż (2), street (2), natura (1).
