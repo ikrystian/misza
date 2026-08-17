@@ -159,7 +159,7 @@
 </section>
 
 <!-- ========== CTA ========== -->
-<section class="cta" id="contact">
+<section class="cta">
   <div class="cta__bg"><img src="<%= pic(content.cta.backgroundFile, content.cta.backgroundVariant) %>" alt="" loading="lazy"></div>
   <div class="wrap cta__inner">
     <p class="eyebrow" data-anim="fade"><%- eyebrowHtml(content.cta.eyebrow) %></p>
@@ -176,6 +176,48 @@
     <% content.instagram.items.forEach(function(item) { %>
     <a href="<%= item.link %>" class="insta__item" data-cursor="Instagram"><img src="<%= pic(item.file, item.variant) %>" alt="" loading="lazy"></a>
     <% }); %>
+  </div>
+</section>
+
+<!-- ========== KONTAKT ========== -->
+<section class="contact section" id="contact">
+  <div class="wrap contact__grid">
+    <div class="contact__info">
+      <p class="eyebrow" data-anim="fade"><%- eyebrowHtml(content.cta.eyebrow) %></p>
+      <h2 class="display" data-split><%= content.cta.heading %></h2>
+      <p class="lead" data-anim="fade"><%= content.cta.text %></p>
+
+      <ul class="contact__details" data-anim="stagger">
+        <li>
+          <span>E-mail</span>
+          <a href="mailto:<%= content.footer.email %>"><%= content.footer.email %></a>
+        </li>
+        <li>
+          <span>Telefon</span>
+          <a href="tel:<%= content.footer.phone.replace(/\s+/g, '') %>"><%= content.footer.phone %></a>
+        </li>
+        <li>
+          <span>Studio</span>
+          <span><%= content.footer.address %></span>
+        </li>
+      </ul>
+
+      <div class="contact__social">
+        <% content.footer.social.forEach(function(s) { %>
+        <a href="<%= s.url %>"><%= s.label %></a>
+        <% }); %>
+      </div>
+    </div>
+
+    <form class="contact__form" id="contactForm" data-anim="fade" data-to="<%= content.footer.email %>">
+      <div class="contact__form-row">
+        <label><span>Imię i nazwisko</span><input type="text" name="name" required></label>
+        <label><span>E-mail</span><input type="email" name="email" required></label>
+      </div>
+      <label><span>Temat</span><input type="text" name="subject" placeholder="Np. sesja portretowa"></label>
+      <label><span>Wiadomość</span><textarea name="message" rows="5" required></textarea></label>
+      <button type="submit" class="btn-line btn-line--lg magnetic"><span>Wyślij wiadomość</span><i></i></button>
+    </form>
   </div>
 </section>
 

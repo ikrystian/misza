@@ -251,6 +251,22 @@
   }
 
   /* =========================================================
+     FORMULARZ KONTAKTOWY — wysyłka przez mailto
+     ========================================================= */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const subject = contactForm.subject.value.trim() || `Wiadomość od ${name}`;
+      const message = contactForm.message.value.trim();
+      const body = `${message}\n\n— ${name}${email ? ` (${email})` : ''}`;
+      window.location.href = `mailto:${contactForm.dataset.to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+
+  /* =========================================================
      LICZNIKI
      ========================================================= */
   document.querySelectorAll('.about__list b').forEach((el) => {
