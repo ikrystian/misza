@@ -675,7 +675,6 @@ h3 {
 
 .admin-tabpanel {
   display: none;
-  max-width: 640px;
   flex-direction: column;
   gap: 16px
 }
@@ -722,7 +721,6 @@ h3 {
   border-radius: 10px;
   padding: 16px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
   margin-bottom: 14px;
 }
@@ -746,7 +744,6 @@ h3 {
 
 .admin-image-field {
   display: flex;
-  flex-direction: column;
   gap: 8px
 }
 
