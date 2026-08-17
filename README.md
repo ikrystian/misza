@@ -102,7 +102,7 @@ niedostępny, strona degraduje się do wersji statycznej. Respektowane jest też
 
 - `data/gallery.json` — zdjęcia galerii: `{ id, category, title, alt, file, width, height, order }`.
 - `data/categories.json` — kategorie filtrów: `{ slug, label, order }` (liczniki liczone w locie).
-- `data/news.json` — wpisy aktualności: `{ slug, category, date, title, excerpt, readTime, image, imageAlt, content: [{type: 'p'|'quote', text}] }`.
+- `data/news.json` — wpisy aktualności: `{ slug, status: 'draft'|'published', category, date, title, excerpt, readTime, image, imageAlt, content: [{type: 'p'|'quote', text}] }`.
 - `data/site-content.json` — sekcje strony głównej (hero, about, showcase, services, cta,
   instagram, footer).
 

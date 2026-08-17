@@ -1,6 +1,7 @@
 [
   {
     "slug": "sezon-2026",
+    "status": "published",
     "category": "Studio",
     "date": "2026-01-12",
     "title": "Sezon 2026 — terminy już otwarte",
@@ -33,6 +34,7 @@
   },
   {
     "slug": "za-kulisami-koncertu",
+    "status": "published",
     "category": "Koncert",
     "date": "2025-11-03",
     "title": "Za kulisami koncertu — jak pracuję w ruchu",
@@ -65,6 +67,7 @@
   },
   {
     "slug": "naturalne-swiatlo-portret",
+    "status": "draft",
     "category": "Poradnik",
     "date": "2025-09-18",
     "title": "Naturalne światło w portrecie — 5 zasad, których się trzymam",
@@ -101,6 +104,7 @@
   },
   {
     "slug": "street-warszawa",
+    "status": "published",
     "category": "Street",
     "date": "2025-07-22",
     "title": "Warszawa nocą — prywatny projekt uliczny",
@@ -133,6 +137,7 @@
   },
   {
     "slug": "wieczor-balowy-relacja",
+    "status": "published",
     "category": "Reportaż",
     "date": "2025-05-14",
     "title": "Wieczór balowy — relacja z sesji reportażowej",
@@ -165,6 +170,7 @@
   },
   {
     "slug": "publikacja-w-magazynie",
+    "status": "published",
     "category": "Editorial",
     "date": "2025-03-02",
     "title": "Publikacja w magazynie — kulisy współpracy",

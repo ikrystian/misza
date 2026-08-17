@@ -12,7 +12,8 @@ async function home(req, res) {
     dataStore.readJSON('site-content'),
     dataStore.readJSON('news'),
   ]);
-  const latestNews = sortByDateDesc(news).slice(0, 3);
+  const publishedNews = news.filter((p) => p.status !== 'draft');
+  const latestNews = sortByDateDesc(publishedNews).slice(0, 3);
   res.render('index', { content, latestNews });
 }
 
@@ -45,7 +46,8 @@ async function aktualnosci(req, res) {
     dataStore.readJSON('site-content'),
     dataStore.readJSON('news'),
   ]);
-  const sorted = sortByDateDesc(news);
+  const publishedNews = news.filter((p) => p.status !== 'draft');
+  const sorted = sortByDateDesc(publishedNews);
   const [featured, ...rest] = sorted;
   res.render('aktualnosci', {
     content,
@@ -60,7 +62,8 @@ async function post(req, res) {
     dataStore.readJSON('site-content'),
     dataStore.readJSON('news'),
   ]);
-  const sorted = sortByDateDesc(news);
+  const publishedNews = news.filter((p) => p.status !== 'draft');
+  const sorted = sortByDateDesc(publishedNews);
   const slug = req.query.slug;
   const index = sorted.findIndex((p) => p.slug === slug);
   const found = index !== -1 ? sorted[index] : null;

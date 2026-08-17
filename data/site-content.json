@@ -23,7 +23,7 @@
         "title": ""
       },
       {
-        "file": "40640172-279071769398458-162187852111675392-n-mswyen7j.jpg",
+        "file": "dsc0101911-mswyvetc.jpg",
         "variant": "large",
         "alt": "",
         "eyebrow": "",
@@ -71,6 +71,7 @@
     "items": [
       {
         "file": "DSC09411.jpg",
+        "hoverFile": "DSC09560.jpg",
         "variant": "thumbs",
         "alt": "Czarno-biały portret studyjny kobiety owiniętej w dżinsową kurtkę",
         "width": 1000,
@@ -80,6 +81,7 @@
       },
       {
         "file": "61163821_389454365026864_6372790439929446400_n.jpg",
+        "hoverFile": "61438791_391280501510917_6963280191804145664_n.jpg",
         "variant": "thumbs",
         "alt": "Wokalista z gitarą akustyczną w dymie scenicznym",
         "width": 1000,
@@ -89,6 +91,7 @@
       },
       {
         "file": "61033584_389454628360171_6445582524914597888_n.jpg",
+        "hoverFile": "67634218_426762441296056_3450091179553587200_n.jpg",
         "variant": "thumbs",
         "alt": "Czarno-biały kadr z koncertu — gitarzysta przy mikrofonie",
         "width": 563,
@@ -98,6 +101,7 @@
       },
       {
         "file": "33.jpg",
+        "hoverFile": "104051770_623786768260288_776721629264222234_n.jpg",
         "variant": "thumbs",
         "alt": "Grupowe zdjęcie balowe w sali z balonami",
         "width": 1000,
@@ -107,6 +111,7 @@
       },
       {
         "file": "DSC06069.jpg",
+        "hoverFile": "DSC00597.jpg",
         "variant": "thumbs",
         "alt": "Pomarańczowa lilia pośród traw, miękkie bokeh",
         "width": 1000,

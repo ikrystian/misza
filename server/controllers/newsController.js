@@ -28,7 +28,7 @@ async function get(req, res) {
 }
 
 async function create(req, res) {
-  const { title, category, date, excerpt, readTime, imageAlt } = req.body;
+  const { title, category, date, excerpt, readTime, imageAlt, status } = req.body;
   if (!title || !category || !date || !excerpt) {
     return res.status(400).json({ error: 'Tytuł, kategoria, data i zajawka są wymagane.' });
   }
@@ -46,6 +46,8 @@ async function create(req, res) {
   const filename = imageService.uniqueFilename(req.file.originalname);
   await imageService.generateVariants(req.file.buffer, filename);
 
+  const postStatus = status === 'draft' ? 'draft' : 'published';
+
   let created = null;
   await dataStore.update('news', (news) => {
     const base = slugify(title) || 'wpis';
@@ -55,6 +57,7 @@ async function create(req, res) {
 
     created = {
       slug,
+      status: postStatus,
       category,
       date,
       title,
@@ -73,7 +76,7 @@ async function create(req, res) {
 
 async function update(req, res) {
   const { slug } = req.params;
-  const { title, category, date, excerpt, readTime, imageAlt } = req.body;
+  const { title, category, date, excerpt, readTime, imageAlt, status } = req.body;
 
   let content;
   try {
@@ -97,6 +100,9 @@ async function update(req, res) {
   await dataStore.update('news', (news) => {
     const entry = news.find((p) => p.slug === slug);
     if (!entry) return news;
+    if (status !== undefined) {
+      entry.status = status === 'draft' ? 'draft' : 'published';
+    }
     if (title !== undefined) entry.title = title;
     if (category !== undefined) entry.category = category;
     if (date !== undefined) entry.date = date;

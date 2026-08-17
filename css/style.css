@@ -388,6 +388,12 @@ body.menu-open .burger span:last-child{transform:translateY(-4px) rotate(-45deg)
   will-change:transform;
 }
 .show-item__media:hover img{transform:scale(1.06);filter:brightness(1.06) saturate(1.04)}
+.show-item__media.has-hover-effect canvas{
+  position:absolute;top:0;left:0;width:100%!important;height:100%!important;
+  pointer-events:none;z-index:2;opacity:0;transition:opacity .4s var(--ease);
+}
+.show-item__media.has-hover-effect.is-loaded canvas{opacity:1}
+.show-item__media.has-hover-effect.is-loaded:hover img{transform:none;filter:none}
 .show-item__meta{
   display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;
   gap:6px 16px;padding-top:18px;border-top:1px solid var(--line);margin-top:18px;

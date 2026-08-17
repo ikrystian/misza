@@ -26,6 +26,13 @@
     <input type="text" name="category" value="<%= item ? item.category : '' %>" required>
   </label>
   <label>
+    <span>Status</span>
+    <select name="status">
+      <option value="published" <%= (!item || item.status !== 'draft') ? 'selected' : '' %>>Opublikowany</option>
+      <option value="draft" <%= (item && item.status === 'draft') ? 'selected' : '' %>>Szkic (draft)</option>
+    </select>
+  </label>
+  <label>
     <span>Data</span>
     <input type="date" name="date" value="<%= item ? item.date : '' %>" required>
   </label>

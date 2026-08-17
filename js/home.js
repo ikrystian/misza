@@ -212,6 +212,40 @@
   }
 
   /* =========================================================
+     POZIOMY SHOWCASE — robin-dela hover effect
+     ========================================================= */
+  function initShowcaseHover() {
+    if (typeof hoverEffect === 'undefined' || typeof THREE === 'undefined') return;
+
+    const mediaElements = document.querySelectorAll('.show-item__media.has-hover-effect');
+    mediaElements.forEach((el) => {
+      const img1 = el.dataset.img1;
+      const img2 = el.dataset.img2;
+      if (!img1 || !img2) return;
+
+      try {
+        new hoverEffect({
+          parent: el,
+          intensity: 0.3,
+          speedIn: 1.2,
+          speedOut: 1.0,
+          easing: 'expo.out',
+          image1: img1,
+          image2: img2,
+          displacementImage: '/public/images/displacement.png',
+          onLoaded: () => {
+            el.classList.add('is-loaded');
+          }
+        });
+      } catch (err) {
+        console.warn('Could not initialize hoverEffect on', el, err);
+      }
+    });
+  }
+
+  initShowcaseHover();
+
+  /* =========================================================
      USŁUGI — podgląd zdjęcia przy kursorze
      ========================================================= */
   const preview = document.getElementById('svcPreview');

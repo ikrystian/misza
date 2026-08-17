@@ -424,15 +424,18 @@
       setTimeout(() => { statusEl.hidden = true; }, 3000);
     }
 
-    function imageField(prefix, file, variant, alt) {
+    function imageField(prefix, file, variant, alt, canClear = false) {
       return `
         <div class="admin-image-field" data-image-field data-variant="${variant}">
           <img src="${file ? picUrl(file, variant) : ''}" alt="" ${file ? '' : 'hidden'}>
           <input type="hidden" data-file value="${esc(file || '')}">
-          <label class="admin-btn admin-btn--ghost admin-btn--sm">
-            Zmień zdjęcie
-            <input type="file" accept="image/jpeg,image/png,image/webp" hidden data-upload>
-          </label>
+          <div class="admin-image-field__controls">
+            <label class="admin-btn admin-btn--ghost admin-btn--sm">
+              ${file ? 'Zmień zdjęcie' : 'Wgraj zdjęcie'}
+              <input type="file" accept="image/jpeg,image/png,image/webp" hidden data-upload>
+            </label>
+            ${canClear ? `<button type="button" class="admin-btn admin-btn--danger admin-btn--sm" data-clear-image ${file ? '' : 'hidden'}>Usuń</button>` : ''}
+          </div>
           ${alt !== undefined ? `<input type="text" placeholder="Opis (alt)" value="${esc(alt)}" data-alt>` : ''}
         </div>`;
     }
@@ -440,6 +443,20 @@
     function bindImageFields(scope) {
       scope.querySelectorAll('[data-image-field]').forEach((field) => {
         const input = field.querySelector('[data-upload]');
+        const clearBtn = field.querySelector('[data-clear-image]');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            field.querySelector('img').src = '';
+            field.querySelector('img').hidden = true;
+            field.querySelector('[data-file]').value = '';
+            clearBtn.hidden = true;
+            const btnLabel = field.querySelector('label');
+            if (btnLabel && btnLabel.childNodes[0]) {
+              btnLabel.childNodes[0].textContent = 'Wgraj zdjęcie\n              ';
+            }
+          });
+        }
         input.addEventListener('change', async () => {
           const file = input.files[0];
           if (!file) return;
@@ -447,9 +464,14 @@
           const reader = new FileReader();
           reader.onload = () => { img.src = reader.result; img.hidden = false; };
           reader.readAsDataURL(file);
+          if (clearBtn) clearBtn.hidden = false;
           try {
             const result = await uploadImage(file);
             field.querySelector('[data-file]').value = result.file;
+            const btnLabel = field.querySelector('label');
+            if (btnLabel && btnLabel.childNodes[0]) {
+              btnLabel.childNodes[0].textContent = 'Zmień zdjęcie\n              ';
+            }
           } catch (err) {
             alert('Nie udało się wgrać zdjęcia: ' + err.message);
           }
@@ -617,11 +639,22 @@
 
       function renderItems() {
         itemsEl.innerHTML = data.showcase.items.map((it, i) => `
-          <div class="admin-repeat-item" data-index="${i}">
-            ${imageField('showcase', it.file, 'thumbs', it.alt)}
-            <input type="text" placeholder="Tytuł" value="${esc(it.title)}" data-title>
-            <input type="text" placeholder="Podtytuł (np. Portret · 2025)" value="${esc(it.subtitle)}" data-subtitle>
-            <button type="button" class="admin-btn admin-btn--danger admin-btn--sm" data-remove>Usuń kadr</button>
+          <div class="admin-repeat-item admin-repeat-item--showcase" data-index="${i}">
+            <div class="admin-two-col">
+              <div>
+                <span class="admin-blocks__label" style="display:block;margin-bottom:6px">Zdjęcie główne</span>
+                ${imageField('showcase-main', it.file, 'thumbs', it.alt)}
+              </div>
+              <div>
+                <span class="admin-blocks__label" style="display:block;margin-bottom:6px">Zdjęcie na hover (podmiana WebGL)</span>
+                ${imageField('showcase-hover', it.hoverFile || '', 'thumbs', undefined, true)}
+              </div>
+            </div>
+            <div class="admin-showcase-meta">
+              <input type="text" placeholder="Tytuł" value="${esc(it.title)}" data-title>
+              <input type="text" placeholder="Podtytuł (np. Portret · 2025)" value="${esc(it.subtitle)}" data-subtitle>
+              <button type="button" class="admin-btn admin-btn--danger admin-btn--sm" data-remove>Usuń kadr</button>
+            </div>
           </div>`).join('');
         bindImageFields(itemsEl);
       }
@@ -629,9 +662,14 @@
 
       function sync() {
         itemsEl.querySelectorAll('.admin-repeat-item').forEach((el, i) => {
-          const img = readImageField(el.querySelector('[data-image-field]'));
+          const fields = el.querySelectorAll('[data-image-field]');
+          const mainImg = readImageField(fields[0]);
+          const hoverImg = fields[1] ? readImageField(fields[1]) : { file: '' };
           data.showcase.items[i] = {
-            ...img,
+            file: mainImg.file,
+            hoverFile: hoverImg.file || '',
+            variant: mainImg.variant || 'thumbs',
+            alt: mainImg.alt || '',
             width: data.showcase.items[i]?.width || 1000,
             height: data.showcase.items[i]?.height || 667,
             title: el.querySelector('[data-title]').value,
@@ -649,7 +687,7 @@
 
       showcasePanel.querySelector('#showcaseAdd').addEventListener('click', () => {
         sync();
-        data.showcase.items.push({ file: '', variant: 'thumbs', alt: '', width: 1000, height: 667, title: '', subtitle: '' });
+        data.showcase.items.push({ file: '', hoverFile: '', variant: 'thumbs', alt: '', width: 1000, height: 667, title: '', subtitle: '' });
         renderItems();
       });
 
