@@ -1,5 +1,5 @@
 node_modules/
 .env
 *.log
-site-content.json
+data/site-content.json
 /pictures/*
