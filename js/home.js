@@ -296,6 +296,8 @@
      USŁUGI — podgląd zdjęcia przy kursorze
      ========================================================= */
   const preview = document.getElementById('svcPreview');
+  const svcSection = document.getElementById('services');
+  const svcList = document.getElementById('svcList');
   const rows = [...document.querySelectorAll('.svc__row')];
 
   if (preview && rows.length && !isTouch && !reduced) {
@@ -312,23 +314,49 @@
       py(e.clientY - preview.offsetHeight / 2);
     };
 
+    const hide = () => {
+      if (!visible) return;
+      visible = false;
+      gsap.killTweensOf(preview);
+      gsap.to(preview, { opacity: 0, scale: 0.9, duration: 0.25, overwrite: true });
+    };
+
     rows.forEach((row) => {
       row.addEventListener('mouseenter', (e) => {
         img.src = row.dataset.img;
         move(e);
-        if (!visible) {
-          visible = true;
-          gsap.fromTo(preview,
-            { opacity: 0, scale: 0.86, rotate: -4 },
-            { opacity: 1, scale: 1, rotate: 0, duration: 0.55, ease: 'expo.out' });
-        }
+        visible = true;
+        gsap.killTweensOf(preview);
+        gsap.fromTo(preview,
+          { opacity: 0, scale: 0.88, rotate: -4 },
+          { opacity: 1, scale: 1, rotate: 0, duration: 0.45, ease: 'expo.out', overwrite: true });
       });
       row.addEventListener('mousemove', move);
-      row.addEventListener('mouseleave', () => {
-        visible = false;
-        gsap.to(preview, { opacity: 0, scale: 0.9, duration: 0.35 });
-      });
+      row.addEventListener('mouseleave', hide);
     });
+
+    // Zabezpieczenie przed zostawaniem zdjęcia:
+    svcList?.addEventListener('mouseleave', hide);
+    svcSection?.addEventListener('mouseleave', hide);
+    document.addEventListener('mouseleave', hide);
+    window.addEventListener('scroll', hide, { passive: true });
+    window.addEventListener('blur', hide);
+
+    // Lenis scroll event
+    if (window.MISZA?.lenis) {
+      window.MISZA.lenis.on('scroll', hide);
+    }
+
+    // Gdy sekcja usług opuszcza ekran
+    if (svcSection) {
+      ScrollTrigger.create({
+        trigger: svcSection,
+        start: 'top bottom',
+        end: 'bottom top',
+        onLeave: hide,
+        onLeaveBack: hide
+      });
+    }
   }
 
   /* =========================================================
