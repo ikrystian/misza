@@ -481,9 +481,13 @@
         slidesEl.innerHTML = data.hero.slides.map((s, i) => `
           <div class="admin-repeat-item" data-index="${i}">
             <div class="admin-repeat-item__handle" data-drag-handle title="Przeciągnij, aby zmienić kolejność">⠿</div>
-            ${imageField('hero', s.file, 'large', s.alt)}
-            <input type="text" placeholder="Nadtytuł (np. Portret)" value="${esc(s.eyebrow)}" data-eyebrow>
-            <input type="text" placeholder="Tytuł slajdu" value="${esc(s.title)}" data-title>
+            ${imageField('hero', s.file, 'large', undefined)}
+            <button type="button" class="admin-btn admin-btn--ghost admin-btn--sm" data-toggle-fields aria-expanded="false">Pokaż opis, nadtytuł i tytuł</button>
+            <div class="admin-collapsible__body" data-fields-body hidden>
+              <input type="text" placeholder="Opis (alt)" value="${esc(s.alt)}" data-alt>
+              <input type="text" placeholder="Nadtytuł (np. Portret)" value="${esc(s.eyebrow)}" data-eyebrow>
+              <input type="text" placeholder="Tytuł slajdu" value="${esc(s.title)}" data-title>
+            </div>
             <button type="button" class="admin-btn admin-btn--danger admin-btn--sm" data-remove>Usuń slajd</button>
           </div>`).join('');
         bindImageFields(slidesEl);
@@ -506,6 +510,13 @@
       initHeroSortable();
 
       slidesEl.addEventListener('click', (e) => {
+        if (e.target.matches('[data-toggle-fields]')) {
+          const body = e.target.closest('.admin-repeat-item').querySelector('[data-fields-body]');
+          body.hidden = !body.hidden;
+          e.target.textContent = body.hidden ? 'Pokaż opis, nadtytuł i tytuł' : 'Ukryj opis, nadtytuł i tytuł';
+          e.target.setAttribute('aria-expanded', String(!body.hidden));
+          return;
+        }
         if (!e.target.matches('[data-remove]')) return;
         const i = Number(e.target.closest('.admin-repeat-item').dataset.index);
         syncHero();
@@ -519,7 +530,7 @@
           data.hero.slides[i] = {
             file: img.file,
             variant: img.variant,
-            alt: img.alt,
+            alt: el.querySelector('[data-alt]').value,
             eyebrow: el.querySelector('[data-eyebrow]').value,
             title: el.querySelector('[data-title]').value,
           };

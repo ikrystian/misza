@@ -771,6 +771,16 @@ h3 {
   font-size: 13px;
 }
 
+.admin-collapsible__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-collapsible__body[hidden] {
+  display: none
+}
+
 .admin-stat-row {
   display: flex;
   gap: 10px;

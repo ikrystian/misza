@@ -2,18 +2,18 @@
   "hero": {
     "slides": [
       {
-        "file": "109518450-646965705942394-1159786611717049934-n-mswlz56m.jpg",
-        "variant": "large",
-        "alt": "Dramatyczny męski portret w ciemnej tonacji, mocne boczne światło",
-        "eyebrow": "Portret",
-        "title": "Światło i cień"
-      },
-      {
         "file": "61438791_391280501510917_6963280191804145664_n.jpg",
         "variant": "large",
         "alt": "Duet na scenie w niebieskim świetle reflektorów",
         "eyebrow": "Koncert",
         "title": "Niebieska scena"
+      },
+      {
+        "file": "109518450-646965705942394-1159786611717049934-n-mswlz56m.jpg",
+        "variant": "large",
+        "alt": "Dramatyczny męski portret w ciemnej tonacji, mocne boczne światło",
+        "eyebrow": "Portret",
+        "title": "Światło i cień"
       },
       {
         "file": "40640172_279071769398458_162187852111675392_n.jpg",
@@ -201,7 +201,7 @@
     ]
   },
   "footer": {
-    "tagline": "Studio fotografii modowej i portretowej.",
+    "tagline": "Studio fotografii modowej i portretowej.11",
     "address": "Warszawa, ul. Wilcza 28",
     "email": "studio@misza.photo",
     "phone": "+48 600 100 200",
