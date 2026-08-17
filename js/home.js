@@ -305,50 +305,89 @@
     const px = gsap.quickTo(preview, 'x', { duration: 0.65, ease: 'power3' });
     const py = gsap.quickTo(preview, 'y', { duration: 0.65, ease: 'power3' });
     let visible = false;
+    let lastX = null, lastY = null;
 
     // wstępne wczytanie miniatur, żeby podmiana była natychmiastowa
     rows.forEach((r) => { new Image().src = r.dataset.img; });
 
     const move = (e) => {
-      px(e.clientX - preview.offsetWidth / 2);
-      py(e.clientY - preview.offsetHeight / 2);
+      lastX = e.clientX;
+      lastY = e.clientY;
+      const targetX = e.clientX - preview.offsetWidth / 2;
+      const targetY = e.clientY - preview.offsetHeight / 2;
+      px(targetX);
+      py(targetY);
     };
 
     const hide = () => {
       if (!visible) return;
       visible = false;
-      gsap.killTweensOf(preview);
-      gsap.to(preview, { opacity: 0, scale: 0.9, duration: 0.25, overwrite: true });
+      gsap.to(preview, {
+        opacity: 0,
+        scale: 0.88,
+        duration: 0.3,
+        ease: 'power2.in',
+        overwrite: 'auto'
+      });
+    };
+
+    const checkHoverOnScroll = () => {
+      if (!visible) return;
+      if (lastX !== null && lastY !== null) {
+        const el = document.elementFromPoint(lastX, lastY);
+        if (!el || !el.closest('.svc__row')) {
+          hide();
+        }
+      } else {
+        hide();
+      }
     };
 
     rows.forEach((row) => {
       row.addEventListener('mouseenter', (e) => {
         img.src = row.dataset.img;
-        move(e);
-        visible = true;
-        gsap.killTweensOf(preview);
-        gsap.fromTo(preview,
-          { opacity: 0, scale: 0.88, rotate: -4 },
-          { opacity: 1, scale: 1, rotate: 0, duration: 0.45, ease: 'expo.out', overwrite: true });
+        lastX = e.clientX;
+        lastY = e.clientY;
+        const targetX = e.clientX - preview.offsetWidth / 2;
+        const targetY = e.clientY - preview.offsetHeight / 2;
+
+        if (!visible) {
+          // Natychmiastowe ustawienie pozycji w miejscu kursora bez opóźnienia
+          gsap.set(preview, { x: targetX, y: targetY });
+          px(targetX);
+          py(targetY);
+          visible = true;
+          gsap.fromTo(preview,
+            { opacity: 0, scale: 0.86, rotate: -4 },
+            { opacity: 1, scale: 1, rotate: 0, duration: 0.45, ease: 'expo.out', overwrite: 'auto' });
+        } else {
+          px(targetX);
+          py(targetY);
+        }
       });
       row.addEventListener('mousemove', move);
-      row.addEventListener('mouseleave', hide);
+      row.addEventListener('mouseleave', (e) => {
+        const related = e.relatedTarget;
+        if (!related || !related.closest || !related.closest('.svc__row')) {
+          hide();
+        }
+      });
     });
 
     // Zabezpieczenie przed zostawaniem zdjęcia:
     svcList?.addEventListener('mouseleave', hide);
     svcSection?.addEventListener('mouseleave', hide);
     document.addEventListener('mouseleave', hide);
-    window.addEventListener('scroll', hide, { passive: true });
     window.addEventListener('blur', hide);
+    window.addEventListener('scroll', checkHoverOnScroll, { passive: true });
 
     // Lenis scroll event
     if (window.MISZA?.lenis) {
-      window.MISZA.lenis.on('scroll', hide);
+      window.MISZA.lenis.on('scroll', checkHoverOnScroll);
     }
 
     // Gdy sekcja usług opuszcza ekran
-    if (svcSection) {
+    if (svcSection && typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.create({
         trigger: svcSection,
         start: 'top bottom',
