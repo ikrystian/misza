@@ -14,6 +14,32 @@
   const slides = [...document.querySelectorAll('[data-slide]')];
   let index = 0, animating = false, autoplay = null;
 
+  /* =========================================================
+     HERO SMOKEY CURSOR (Lightswind UI WebGL Fluid Effect)
+     ========================================================= */
+  let smokeyCursor = null;
+  const heroSmokeCanvas = document.getElementById('heroSmokeCanvas');
+  const heroEl = document.getElementById('hero');
+
+  if (heroSmokeCanvas && heroEl && typeof window.createSmokeyCursor === 'function' && !reduced) {
+    smokeyCursor = window.createSmokeyCursor({
+      canvas: heroSmokeCanvas,
+      container: heroEl,
+      simulationResolution: 128,
+      dyeResolution: 1024,
+      densityDissipation: 3.2,
+      velocityDissipation: 1.8,
+      pressure: 0.15,
+      pressureIterations: 20,
+      curl: 24,
+      splatRadius: 0.22,
+      splatForce: 6000,
+      enableShading: true,
+      autoColors: true,
+      opacity: 0.2,
+    });
+  }
+
   const numEl = document.getElementById('slideNum');
   const totalEl = document.getElementById('slideTotal');
   const dotsWrap = document.getElementById('heroDots');
@@ -71,6 +97,12 @@
     to.classList.add('is-active');
     gsap.set(toMedia, { clipPath: dir > 0 ? 'inset(0% 0% 100% 0%)' : 'inset(100% 0% 0% 0%)' });
     gsap.set(toImg, { scale: 1.25 });
+
+    // delikatny impuls dymu przy zmianie slajdu
+    if (smokeyCursor) {
+      const dirX = dir > 0 ? 350 : -350;
+      smokeyCursor.splat(0.5, 0.5, dirX, 40, { r: 0.2, g: 0.18, b: 0.16 });
+    }
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -135,15 +167,27 @@
     gsap.set(progress, { width: '0%' });
   }
 
-  // pauza autoplay, gdy hero jest poza ekranem
+  // pauza autoplay oraz smokey cursor, gdy hero jest poza ekranem
   if (slides.length) {
     ScrollTrigger.create({
       trigger: '#hero',
       start: 'top bottom',
       end: 'bottom top',
-      onLeave: stopAutoplay,
-      onLeaveBack: stopAutoplay,
-      onEnterBack: startAutoplay
+      onLeave: () => {
+        stopAutoplay();
+        smokeyCursor?.pause();
+      },
+      onLeaveBack: () => {
+        stopAutoplay();
+        smokeyCursor?.pause();
+      },
+      onEnter: () => {
+        smokeyCursor?.start();
+      },
+      onEnterBack: () => {
+        startAutoplay();
+        smokeyCursor?.start();
+      }
     });
   }
 
@@ -163,7 +207,10 @@
       .from(['.hero__side', '.hero__nav', '.hero__dots', '.hero__scroll'], {
         opacity: 0, duration: 1, stagger: 0.08
       }, 0.8)
-      .call(startAutoplay);
+      .call(() => {
+        startAutoplay();
+        smokeyCursor?.multipleSplats(3);
+      });
   });
 
   /* =========================================================
