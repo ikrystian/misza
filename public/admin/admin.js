@@ -13,8 +13,19 @@
     }[c]));
   }
 
+  // PHP nie parsuje ciała multipart/form-data dla PUT/PATCH/DELETE — takie żądania wysyłamy
+  // jako POST z polem `_method`, które serwer tłumaczy z powrotem na właściwą metodę.
+  function withMethodOverride(options) {
+    const method = (options.method || 'GET').toUpperCase();
+    if (!(options.body instanceof FormData) || !['PUT', 'PATCH', 'DELETE'].includes(method)) {
+      return options;
+    }
+    options.body.set('_method', method);
+    return { ...options, method: 'POST' };
+  }
+
   async function api(url, options = {}) {
-    const res = await fetch(url, options);
+    const res = await fetch(url, withMethodOverride(options));
     let data = null;
     try { data = await res.json(); } catch { /* brak treści JSON */ }
     if (!res.ok) throw new Error((data && data.error) || `Błąd żądania (${res.status}).`);

@@ -1,0 +1,41 @@
+# MISZA — konfiguracja dla shared hostingu (Apache + mod_rewrite)
+
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # istniejące pliki (css, js, zdjęcia) serwuje Apache — bez udziału PHP
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # wszystko inne obsługuje front controller
+  RewriteRule ^ index.php [L]
+</IfModule>
+
+# pliki konfiguracyjne i pozostałości po wersji node'owej nie mogą być serwowane
+<FilesMatch "^(\.env.*|\.user\.ini|\.gitignore|composer\..*|package(-lock)?\.json|nodemon\.json|.*\.md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

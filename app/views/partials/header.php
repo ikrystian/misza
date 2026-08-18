@@ -1,0 +1,17 @@
+<div class="cursor" id="cursor"><span class="cursor__label"></span></div>
+
+<header class="header" id="header">
+  <a class="header__logo" href="/">Michał Duma<i>®</i></a>
+  <nav class="nav" id="nav">
+    <a href="/"<?= $active === 'home' ? ' class="is-active"' : '' ?>>Start</a>
+    <a href="/gallery.html"<?= $active === 'gallery' ? ' class="is-active"' : '' ?>>Galeria</a>
+    <a href="<?= $onHome ? '#about' : '/#about' ?>">O studio</a>
+    <a href="/aktualnosci.html"<?= $active === 'news' ? ' class="is-active"' : '' ?>>Aktualności</a>
+    <a href="<?= $onHome ? '#services' : '/#services' ?>">Usługi</a>
+    <a href="<?= $onHome ? '#contact' : '/#contact' ?>">Kontakt</a>
+  </nav>
+  <div class="header__right">
+    <a href="<?= $onHome ? '#contact' : '/#contact' ?>" class="btn-ghost">Umów sesję</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>

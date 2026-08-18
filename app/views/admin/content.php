@@ -1,0 +1,27 @@
+<?php partial('admin/partials/shell-start', ['title' => 'Treść strony', 'username' => $username, 'active' => 'content']); ?>
+
+<header class="admin__head">
+  <h1>Treść strony głównej</h1>
+  <p>Edytuj sekcje strony głównej. Każda sekcja zapisuje się osobno.</p>
+</header>
+
+<div class="admin-tabs" id="contentTabs">
+  <button type="button" class="admin-tab is-active" data-tab="hero">Hero</button>
+  <button type="button" class="admin-tab" data-tab="about">O studio</button>
+  <button type="button" class="admin-tab" data-tab="showcase">Wybrane kadry</button>
+  <button type="button" class="admin-tab" data-tab="services">Usługi</button>
+  <button type="button" class="admin-tab" data-tab="cta">Kontakt (CTA)</button>
+  <button type="button" class="admin-tab" data-tab="instagram">Instagram</button>
+  <button type="button" class="admin-tab" data-tab="footer">Stopka</button>
+</div>
+
+<div class="admin-tabpanel is-active" data-tabpanel="hero" id="panel-hero"></div>
+<div class="admin-tabpanel" data-tabpanel="about" id="panel-about"></div>
+<div class="admin-tabpanel" data-tabpanel="showcase" id="panel-showcase"></div>
+<div class="admin-tabpanel" data-tabpanel="services" id="panel-services"></div>
+<div class="admin-tabpanel" data-tabpanel="cta" id="panel-cta"></div>
+<div class="admin-tabpanel" data-tabpanel="instagram" id="panel-instagram"></div>
+<div class="admin-tabpanel" data-tabpanel="footer" id="panel-footer"></div>
+
+<script id="initial-data" type="application/json"><?= json_script($content) ?></script>
+<?php partial('admin/partials/shell-end'); ?>
